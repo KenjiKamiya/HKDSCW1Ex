@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>LMS</title>
+</head>
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	tr {
+		border: 3px solid white;
+        background-color: #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+    td{
+        border: 0px;
+        display:flex;
+    }
+
+</style>
+
+<body>
+	<table>
+        <% data.forEach(element=> { %>
+		<tr>
+			<th>牛肉</th>
+            <td>
+                <form action="/add" method="post">
+                    <input type="text" style="display: none;"
+                        name="name"
+                        value="Cow">
+                    <button type="submit">+</button>
+                </form>
+                <%= element.Cow %>
+                <form action="/reduce" method="post">
+                    <input type="text" style="display: none;"
+                        name="name"
+                        value="Cow">
+                    <button type="submit">-</button>
+                </form>
+            </td>
+		</tr>
+			<tr>
+                <th>猪肉</th>
+                <td>
+                    <form action="/add" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Pig">
+                        <button type="submit">+</button>
+                    </form>
+                    <%= element.Pig %>
+                    <form action="/reduce" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Pig">
+                        <button type="submit">-</button>
+                    </form>
+                </td>
+
+            </tr>
+            <tr>
+                <th>生菜</th>
+                <td>
+
+                    <form action="/add" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Vegetable">
+                        <button type="submit">+</button>
+                    </form>
+                    <%= element.Vegetable %>
+                    <form action="/reduce" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Vegetable">
+                        <button type="submit">-</button>
+                    </form>
+                </td>
+
+            </tr>
+            <tr>
+                <th>鷄蛋</th>
+                <td>
+                 
+                    <form action="/add" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Egg">
+                        <button type="submit">+</button>
+                    </form>
+                    <%= element.Egg %>
+                    <form action="/reduce" method="post">
+                        <input type="text" style="display: none;"
+                            name="name"
+                            value="Egg">
+                        <button type="submit">-</button>
+                    </form>
+                </td>
+                
+            </tr>
+            <% }) %>
+	</table>
+
+
+	<form action="/addNew" method="post">
+		<input type="text" placeholder="商品" name="product" id="product"> 
+		<button type="submit">新增</button>
+	</form>
+    <form action="http://example.com/cart" method="post">
+		<input type="text" style="display: none;" name="product" id="product" value="<%=data %>"> 
+		<button type="submit">遞交</button>
+	</form>
+</body>
+
+</html>
